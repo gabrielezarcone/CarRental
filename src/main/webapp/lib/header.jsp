@@ -3,6 +3,6 @@
 <h1 id="appName">Car Rental Service</h1>
 <div id="header">
     <a href="home" id="homepage_btn" class="header_btn interactive">HomePage</a>
-    <div id="parcoauto_btn" class="header_btn interactive">Parco Auto</div>
-    <div id="profilo_btn" class="header_btn interactive">Profilo utente</div>
+    <a href="parco" id="parcoauto_btn" class="header_btn interactive">Parco Auto</a>
+    <a href="profilo" id="profilo_btn" class="header_btn interactive">Profilo utente</a>
 </div>

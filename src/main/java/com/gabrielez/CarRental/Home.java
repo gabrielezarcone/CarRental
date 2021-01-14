@@ -10,7 +10,13 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        request.setAttribute("pagina", "home.jsp");
+        boolean isAdmin = (Boolean) request.getSession(false).getAttribute("isAdmin");
+        if(isAdmin){
+            request.setAttribute("pagina", "homeAdmin.jsp");
+        }
+        else{
+            request.setAttribute("pagina", "homeCustomer.jsp");
+        }
         dispatcher.forward(request,response);
     }
 
