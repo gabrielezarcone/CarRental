@@ -20,8 +20,8 @@ public class HibernateUtil {
                 Configuration configuration = new Configuration();
                 //Equivalente del file hibernate.cfg.xml
                 Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.cj.jdb.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate_db?useSSL=false");
+                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+                settings.put(Environment.URL, "jdbc:mysql://localhost/CarRental");
                 settings.put(Environment.USER, "carRenter");
                 settings.put(Environment.PASS, "KwesIN%%er!");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
