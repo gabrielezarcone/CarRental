@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Faster+One&family=Libre+Barcode+128+Text&family=Pompiere&family=Warnes&family=Zilla+Slab+Highlight:wght@400;700&display=swap');
+/*
+font-family: 'Faster One', cursive;
+font-family: 'Libre Barcode 128 Text', cursive;
+font-family: 'Pompiere', cursive;
+font-family: 'Warnes', cursive;
+font-family: 'Zilla Slab Highlight', cursive;
+ */
+
 *{
     margin: 0;
     padding: 0;
@@ -14,6 +23,7 @@
 #appName{
     text-align: center;
     margin: 10px;
+    font-family: 'Zilla Slab Highlight', cursive;
 }
 
 #header{
