@@ -23,3 +23,13 @@
 .header_btn{
     margin: 10px;
 }
+
+.customer_card{
+    margin-bottom: 5px;
+    text-align: center;
+    background-color: #88a3ff;
+}
+
+.deleted_customer{
+    background-color: #ff7367;
+}
