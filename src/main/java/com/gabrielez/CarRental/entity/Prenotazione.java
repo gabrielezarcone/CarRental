@@ -1,14 +1,15 @@
 package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Prenotazioni")
-public class Prenotazione {
+public class Prenotazione implements Serializable {
     @Id
-    @Column(name = "data_operazione")
-    private String dataOperazione;
+    @Column(name = "data_operazione", length = 30)
+    private Date dataOperazione;
 
     @Id
     @OneToOne
@@ -20,7 +21,7 @@ public class Prenotazione {
     @JoinColumn(name = "auto", referencedColumnName = "targa")
     private Auto auto;
 
-    @Column(name = "stato")
+    @Column(name = "stato", length = 30)
     private String stato;
 
     @Column(name = "inizio")
@@ -30,11 +31,11 @@ public class Prenotazione {
     private Date fine;
 
 
-    public String getDataOperazione() {
+    public Date getDataOperazione() {
         return dataOperazione;
     }
 
-    public void setDataOperazione(String dataOperazione) {
+    public void setDataOperazione(Date dataOperazione) {
         this.dataOperazione = dataOperazione;
     }
 
@@ -76,5 +77,15 @@ public class Prenotazione {
 
     public void setFine(Date fine) {
         this.fine = fine;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

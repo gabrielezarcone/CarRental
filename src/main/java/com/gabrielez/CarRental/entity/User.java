@@ -7,13 +7,13 @@ import java.util.Date;
 @Table(name = "Users")
 public class User {
     @Id
-    @Column(name="username")
+    @Column(name="username", length = 30)
     private String username;
 
-    @Column(name="name")
+    @Column(name="name", length = 30)
     private String name;
 
-    @Column(name="surname")
+    @Column(name="surname", length = 30)
     private String surname;
 
     @Column(name="birth_date")

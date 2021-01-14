@@ -1,24 +1,25 @@
 package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Auto")
 public class Auto {
     @Id
-    @Column(name = "targa")
+    @Column(name = "targa", length = 30)
     private String targa;
 
     @Column(name = "immatricolazione")
-    private String immatricolazione;
+    private Date immatricolazione;
 
-    @Column(name = "modello")
+    @Column(name = "modello", length = 30)
     private String modello;
 
-    @Column(name = "costruttore")
+    @Column(name = "costruttore", length = 30)
     private String costruttore;
 
-    @Column(name = "tipologia")
+    @Column(name = "tipologia", length = 30)
     private String tipologia;
 
     public String getTarga() {
@@ -31,11 +32,11 @@ public class Auto {
         this.targa = targa;
     }
 
-    public String getImmatricolazione() {
+    public Date getImmatricolazione() {
         return immatricolazione;
     }
 
-    public void setImmatricolazione(String immatricolazione) {
+    public void setImmatricolazione(Date immatricolazione) {
         this.immatricolazione = immatricolazione;
     }
 
