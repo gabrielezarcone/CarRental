@@ -1,4 +1,4 @@
-package com.gabrielez.CarRental;
+package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
 

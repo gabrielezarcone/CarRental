@@ -1,41 +1,41 @@
-package com.gabrielez.CarRental;
+package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Prenotazione")
+@Table(name = "Prenotazioni")
 public class Prenotazione {
     @Id
     @Column(name = "data_operazione")
-    private String data_operazione;
+    private String dataOperazione;
 
     @Id
     @OneToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "user", referencedColumnName = "username")
     private User user;
 
     @Id
     @OneToOne
-    @JoinColumn(name = "targa")
+    @JoinColumn(name = "auto", referencedColumnName = "targa")
     private Auto auto;
 
-    @Column(name = "data_operazione")
+    @Column(name = "stato")
     private String stato;
 
-    @Column(name = "data_operazione")
+    @Column(name = "inizio")
     private Date inizio;
 
-    @Column(name = "data_operazione")
+    @Column(name = "fine")
     private Date fine;
 
 
-    public String getData_operazione() {
-        return data_operazione;
+    public String getDataOperazione() {
+        return dataOperazione;
     }
 
-    public void setData_operazione(String data_operazione) {
-        this.data_operazione = data_operazione;
+    public void setDataOperazione(String dataOperazione) {
+        this.dataOperazione = dataOperazione;
     }
 
     public User getUser() {

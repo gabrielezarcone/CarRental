@@ -1,9 +1,10 @@
-package com.gabrielez.CarRental;
+package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class User {
     @Id
     @Column(name="username")
@@ -16,7 +17,7 @@ public class User {
     private String surname;
 
     @Column(name="birth_date")
-    private String birth_date;
+    private Date birth_date;
 
     @Column(name="is_admin")
     private boolean is_admin;
@@ -48,11 +49,11 @@ public class User {
         this.surname = surname;
     }
 
-    public String getBirth_date() {
+    public Date getBirth_date() {
         return birth_date;
     }
 
-    public void setBirth_date(String birth_date) {
+    public void setBirth_date(Date birth_date) {
         this.birth_date = birth_date;
     }
 
