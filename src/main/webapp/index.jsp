@@ -2,12 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>CAR RENTAL SERVICE</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+    <jsp:include page="lib/header.jsp" />
 </body>
 </html>
