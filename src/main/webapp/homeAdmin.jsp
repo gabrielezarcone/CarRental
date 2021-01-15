@@ -9,8 +9,12 @@ HOMEPAGE ADMIN
         </div>
         <c:choose>
             <c:when test="${not customer.deleted}">
-                <div class="interactive customer_btn edit_customer_btn">Modifica</div>
-                <div class="interactive customer_btn delete_customer_btn" onclick="deleteUser('${customer.username}')">Elimina</div>
+                <div class="interactive customer_btn edit_customer_btn" onclick="location.href='./updateUserInfo?username=${customer.username}'">
+                    Modifica
+                </div>
+                <div class="interactive customer_btn delete_customer_btn" onclick="deleteUser('${customer.username}')">
+                    Elimina
+                </div>
             </c:when>
             <c:otherwise>
                 <div class="customer_btn"></div>
