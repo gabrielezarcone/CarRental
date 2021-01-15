@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="" method="post">
+    <form id="userInfoForm" action="" method="post">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" placeholder="${userInfo.username}">
         <label for="password">Password</label>
