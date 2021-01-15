@@ -6,6 +6,7 @@ import com.gabrielez.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserDao {
@@ -38,10 +39,26 @@ public class UserDao {
             return session.createQuery(query,User.class).list();
         }}
 
-    public
-    List<User> getAdmins(){
+    public List<User> getAdmins(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             String query = "FROM User WHERE is_admin=true";
             return session.createQuery(query,User.class).list();
         }}
+
+    public void deleteUser(String username) {
+        Transaction transaction = null;
+        try(Session session =HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            User user = session.load(User.class,username);
+            user.setDeleted(true);
+            session.update(user);
+            transaction.commit();
+        }
+        catch(Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

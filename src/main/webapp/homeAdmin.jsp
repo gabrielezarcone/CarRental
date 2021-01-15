@@ -7,8 +7,16 @@ HOMEPAGE ADMIN
             <div>${customer.name} ${customer.surname}</div>
             <div>Username: ${customer.username}</div>
         </div>
-        <div class="interactive customer_btn edit_customer_btn">Modifica</div>
-        <div class="interactive customer_btn delete_customer_btn">Elimina</div>
+        <c:choose>
+            <c:when test="${not customer.deleted}">
+                <div class="interactive customer_btn edit_customer_btn">Modifica</div>
+                <div class="interactive customer_btn delete_customer_btn" onclick="deleteUser('${customer.username}')">Elimina</div>
+            </c:when>
+            <c:otherwise>
+                <div class="customer_btn"></div>
+                <div class="customer_btn"></div>
+            </c:otherwise>
+        </c:choose>
     </div>
 </c:forEach>
 

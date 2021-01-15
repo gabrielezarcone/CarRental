@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script src="js/functions.js"></script>
 
 <h1 id="appName">Car Rental Service</h1>
 <div id="header">
