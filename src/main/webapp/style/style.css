@@ -35,11 +35,30 @@ font-family: 'Zilla Slab Highlight', cursive;
 }
 
 .customer_card{
+    display: flex;
+    justify-content: center;
     margin-bottom: 5px;
     text-align: center;
     background-color: #88a3ff;
 }
+.customer_card div{
+    margin: 5px;
+}
 
 .deleted_customer{
     background-color: #ff7367;
+}
+
+.customer_btn{
+    min-width: 5%;
+    text-align: center;
+    padding: 7px 2px;
+}
+.delete_customer_btn{
+    background-color: red;
+    color: whitesmoke;
+}
+.edit_customer_btn{
+    background-color: green;
+    color: whitesmoke;
 }

@@ -3,8 +3,12 @@
 HOMEPAGE ADMIN
 <c:forEach var="customer" items="${customersList}">
     <div class="customer_card ${customer.deleted ? 'deleted_customer' : ''}">
-        <div>${customer.name} ${customer.surname}</div>
-        <div>${customer.username}</div>
+        <div>
+            <div>${customer.name} ${customer.surname}</div>
+            <div>Username: ${customer.username}</div>
+        </div>
+        <div class="interactive customer_btn edit_customer_btn">Modifica</div>
+        <div class="interactive customer_btn delete_customer_btn">Elimina</div>
     </div>
 </c:forEach>
 
