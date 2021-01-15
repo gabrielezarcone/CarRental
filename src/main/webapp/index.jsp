@@ -10,9 +10,6 @@
 <body>
     <jsp:include page="lib/header.jsp" />
 
-    <%--Temporaneo. Da togliere dopo aver implementato il meccanismo di login--%>
-    <% session.setAttribute("isAdmin", true); %>
-
     <c:choose>
         <c:when test="${not empty pagina}">
             <jsp:include page="${pagina}" />
