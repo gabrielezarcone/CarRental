@@ -1,5 +1,6 @@
 package com.gabrielez.CarRental;
 
+import com.gabrielez.CarRental.dao.UserDao;
 import com.gabrielez.CarRental.entity.User;
 
 import javax.servlet.*;
@@ -12,6 +13,8 @@ public class UpdateUserInfo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+        User user = UserDao.getUser(username);
+        request.setAttribute("userInfo", user);
         request.setAttribute("pagina", "updateUserInfo.jsp");
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request,response);

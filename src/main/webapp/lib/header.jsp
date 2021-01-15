@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script src="js/functions.js"></script>
+<link rel="stylesheet" href="style/style.css">
 
 <h1 id="appName">Car Rental Service</h1>
 <div id="header">
