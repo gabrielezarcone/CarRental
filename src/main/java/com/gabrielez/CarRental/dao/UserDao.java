@@ -61,4 +61,10 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+
+    public static User getUser(String username){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            return session.get(User.class, username);
+        }
+    }
 }

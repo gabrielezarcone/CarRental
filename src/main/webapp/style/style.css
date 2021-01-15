@@ -62,3 +62,7 @@ font-family: 'Zilla Slab Highlight', cursive;
     background-color: green;
     color: whitesmoke;
 }
+
+#loginForm{
+    align-self: center;
+}
