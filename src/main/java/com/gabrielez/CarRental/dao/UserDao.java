@@ -66,9 +66,9 @@ public class UserDao {
     public static User getUser(String username){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             String queryStr = "FROM User WHERE username=:username";
-            Query query = session.createQuery(queryStr);
-            query.setParameter("username", username);
-            return (User) query.getSingleResult();
+            return (User) session.createQuery(queryStr)
+                .setParameter("username", username)
+                .getSingleResult();
         }
     }
 
