@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-HOMEPAGE ADMIN
 <div id="customers">
+    <div id="add_customer_btn" class="interactive customer_card"><p>+</p></div>
     <c:forEach var="customer" items="${customersList}">
-        <div class="customer_card ${customer.deleted ? 'deleted_customer' : ''}">
+        <div class="customer_card ${customer.deleted ? 'deleted_customer' : 'active_customer'}">
             <div>
                 <div>${customer.name} ${customer.surname}</div>
                 <b>${customer.username}</b>
