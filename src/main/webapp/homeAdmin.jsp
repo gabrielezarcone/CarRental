@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="customers">
-    <div id="add_customer_btn" class="interactive customer_card"><p>+</p></div>
+    <div id="add_customer_btn" class="interactive customer_card" onclick="location.href='./NewCustomer'"><p>+</p></div>
     <c:forEach var="customer" items="${customersList}">
         <div class="customer_card ${customer.deleted ? 'deleted_customer' : 'active_customer'}">
             <div>

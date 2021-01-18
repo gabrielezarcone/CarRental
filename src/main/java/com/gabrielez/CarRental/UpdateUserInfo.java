@@ -32,6 +32,9 @@ public class UpdateUserInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = UserDao.getUser(request.getParameter("username"));
+        if(user==null){
+            user = new User();
+        }
         user.setUsername(request.getParameter("username"));
         user.setName(request.getParameter("name"));
         user.setSurname(request.getParameter("surname"));

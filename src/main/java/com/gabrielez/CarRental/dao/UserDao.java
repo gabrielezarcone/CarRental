@@ -70,13 +70,16 @@ public class UserDao {
                 .setParameter("username", username)
                 .getSingleResult();
         }
+        catch (Exception e){
+            return null;
+        }
     }
 
     public static void updateUser(User user){
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             transaction = session.beginTransaction();
-            session.update(user);
+            session.saveOrUpdate(user);
             transaction.commit();
         }
         catch (Exception e){
