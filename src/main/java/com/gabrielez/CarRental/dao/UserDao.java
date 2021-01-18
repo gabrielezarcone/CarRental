@@ -67,4 +67,19 @@ public class UserDao {
             return session.get(User.class, username);
         }
     }
+
+    public static void updateUser(User user){
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.update(user);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

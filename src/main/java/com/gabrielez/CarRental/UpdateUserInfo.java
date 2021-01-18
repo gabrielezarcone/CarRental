@@ -7,6 +7,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet(name = "UpdateUserInfo", value = "/updateUserInfo")
 public class UpdateUserInfo extends HttpServlet {
@@ -22,6 +25,24 @@ public class UpdateUserInfo extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
+        User user = UserDao.getUser(request.getParameter("username"));
+        user.setUsername(request.getParameter("username"));
+        user.setName(request.getParameter("name"));
+        user.setSurname(request.getParameter("surname"));
+        try {
+            String date = request.getParameter("birth_date");
+            if(date != null){
+                user.setBirth_date( new SimpleDateFormat("yyyy-MM-dd").parse(date));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String password = request.getParameter("password");
+        if(!password.equals("")){
+            user.setPassword(request.getParameter("password"));
+        }
+        UserDao.updateUser(user);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request,response);
     }
 }

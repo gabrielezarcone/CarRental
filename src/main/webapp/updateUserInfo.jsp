@@ -7,17 +7,17 @@
 </head>
 <body>
 
-    <form id="userInfoForm" action="" method="post">
+    <form id="userInfoForm" action="updateUserInfo" method="post">
         <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="${userInfo.username}">
+        <input type="text" name="username" id="username" value="${userInfo.username}">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" placeholder="--invariata--">
         <label for="name">Nome</label>
-        <input type="text" name="name" id="name" placeholder="${userInfo.name}">
+        <input type="text" name="name" id="name" value="${userInfo.name}">
         <label for="surname">Cognome</label>
-        <input type="text" name="surname" id="surname" placeholder="${userInfo.surname}">
+        <input type="text" name="surname" id="surname" value="${userInfo.surname}">
         <label for="birthDate">Data di nascita</label>
-        <input type="date" name="birthDate" id="birthDate" placeholder="${userInfo.birth_date}">
+        <input type="date" name="birth_date" id="birth_date" value="${userInfo.birth_date}">
         <input type="submit" value="Salva">
     </form>
 </body>
