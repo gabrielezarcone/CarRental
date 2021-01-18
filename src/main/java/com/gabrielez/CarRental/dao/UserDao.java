@@ -5,8 +5,9 @@ import com.gabrielez.CarRental.entity.User;
 import com.gabrielez.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import javax.persistence.Query;
+
 import java.util.List;
 
 public class UserDao {
@@ -64,7 +65,10 @@ public class UserDao {
 
     public static User getUser(String username){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            return session.get(User.class, username);
+            String queryStr = "FROM User WHERE username=:username";
+            Query query = session.createQuery(queryStr);
+            query.setParameter("username", username);
+            return (User) query.getSingleResult();
         }
     }
 

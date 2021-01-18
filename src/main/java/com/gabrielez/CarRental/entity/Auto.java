@@ -7,7 +7,10 @@ import java.util.Date;
 @Table(name = "Auto")
 public class Auto {
     @Id
-    @Column(name = "targa", length = 30)
+    @GeneratedValue
+    private Long id;
+
+    @Column(name = "targa", length = 30, unique = true)
     private String targa;
 
     @Column(name = "immatricolazione")

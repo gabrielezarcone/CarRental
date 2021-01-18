@@ -7,7 +7,10 @@ import java.util.Date;
 @Table(name = "Users")
 public class User {
     @Id
-    @Column(name="username", length = 30)
+    @GeneratedValue
+    private Long id;
+
+    @Column(name="username", length = 30, unique = true)
     private String username;
 
     @Column(name="password", length = 30)
