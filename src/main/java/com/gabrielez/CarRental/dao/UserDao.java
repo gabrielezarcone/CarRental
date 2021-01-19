@@ -50,7 +50,7 @@ public class UserDao {
         Transaction transaction = null;
         try(Session session =HibernateUtil.getSessionFactory().openSession()){
             transaction = session.beginTransaction();
-            User user = session.load(User.class,username);
+            User user = UserDao.getUser(username);
             user.setDeleted(true);
             session.update(user);
             transaction.commit();
