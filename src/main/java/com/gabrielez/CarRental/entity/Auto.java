@@ -7,10 +7,10 @@ import java.util.Date;
 @Table(name = "Auto")
 public class Auto {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "targa", length = 30, unique = true)
+    @Column(name = "targa", length = 30, unique = true, nullable = false)
     private String targa;
 
     @Column(name = "immatricolazione")
