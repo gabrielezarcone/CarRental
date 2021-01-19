@@ -1,4 +1,5 @@
 function deleteUser(username){
+    event.stopPropagation();
     var xhr = new XMLHttpRequest();
     var method = 'POST';
     var params = 'username='+username;
@@ -9,7 +10,12 @@ function deleteUser(username){
 
     xhr.onload = function () {
         alert("L\'utente "+ username +' è stato eliminato');
-        location.reload();
+        location.href= './home';
     }
     xhr.send(params);
+}
+
+function servletToGet(url){
+    location.href= url;
+    event.stopPropagation();
 }

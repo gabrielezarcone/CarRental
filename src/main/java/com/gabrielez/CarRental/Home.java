@@ -12,10 +12,11 @@ import java.io.IOException;
 public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("loggedUser");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("loggedUser");
         if(user!=null && user.isIs_admin()){
             UserDao userDao = new UserDao();
-            request.setAttribute("customersList",userDao.getCustomers());
+            session.setAttribute("customersList",userDao.getCustomers());
             request.setAttribute("pagina", "homeAdmin.jsp");
         }
         else{

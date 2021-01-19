@@ -15,9 +15,10 @@ font-family: 'Zilla Slab Highlight', cursive;
 
 .interactive{
     cursor: pointer;
+    transition: all 0.3s ease-out;
 }
 .interactive:hover{
-    opacity: 60%;
+    background: rgba(84, 84, 84, 0.4)
 }
 
 #appName{
