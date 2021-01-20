@@ -27,11 +27,10 @@
         </div>
         <c:if test="${selectedCustomer==customer.username && not customer.deleted}">
             <div class="listaPrenotrazioni">
-                Prenotazione 1
-                <hr>
-                Prenotazione 2
-                <hr>
-                Prenotazione 3
+                <c:forEach var="prenotazione" items="${listaPrenotazioni}">
+                    ${prenotazione}
+                    <hr>
+                </c:forEach>
             </div>
         </c:if>
     </c:forEach>
