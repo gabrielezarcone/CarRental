@@ -1,11 +1,9 @@
 package com.gabrielez.CarRental.dao;
 
-import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.User;
 import com.gabrielez.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 
 import java.util.List;

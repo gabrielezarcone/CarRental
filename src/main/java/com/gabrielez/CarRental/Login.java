@@ -2,7 +2,6 @@ package com.gabrielez.CarRental;
 
 import com.gabrielez.CarRental.dao.UserDao;
 import com.gabrielez.CarRental.entity.User;
-import org.hibernate.Session;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
