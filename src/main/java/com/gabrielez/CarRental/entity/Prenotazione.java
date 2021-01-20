@@ -7,6 +7,14 @@ import java.util.Date;
 @Entity
 @Table(name = "Prenotazioni")
 public class Prenotazione{
+
+    enum Stato{
+        NON_APPROVATO,
+        DA_APPROVARE,
+        APPROVATO
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,8 +28,8 @@ public class Prenotazione{
     @JoinColumn(name = "auto")
     private Auto auto;
 
-    @Column(name = "stato", length = 30)
-    private String stato;
+    @Column(name = "stato")
+    private Stato stato;
 
     @Column(name = "inizio")
     private Date inizio;
@@ -54,11 +62,11 @@ public class Prenotazione{
         this.auto = auto;
     }
 
-    public String getStato() {
+    public Stato getStato() {
         return stato;
     }
 
-    public void setStato(String stato) {
+    public void setStato(Stato stato) {
         this.stato = stato;
     }
 
