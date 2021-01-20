@@ -27,10 +27,23 @@
         </div>
         <c:if test="${selectedCustomer==customer.username && not customer.deleted}">
             <div class="listaPrenotrazioni">
-                <c:forEach var="prenotazione" items="${listaPrenotazioni}">
-                    ${prenotazione}
-                    <hr>
-                </c:forEach>
+                <table>
+                    <tr>
+                        <th>Auto</th>
+                        <th>Inizio</th>
+                        <th>Fine</th>
+                        <th>Stato Approvazione</th>
+                    </tr>
+                    <c:forEach var="prenotazione" items="${listaPrenotazioni}">
+                        <tr>
+                            <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>
+                            <td>${prenotazione.inizio}</td>
+                            <td>${prenotazione.fine}</td>
+                            <td>${prenotazione.stato}</td>
+                        </tr>
+                        <hr>
+                    </c:forEach>
+                </table>
             </div>
         </c:if>
     </c:forEach>
