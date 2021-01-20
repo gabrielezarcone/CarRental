@@ -2,6 +2,7 @@ package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Auto")
@@ -25,11 +26,13 @@ public class Auto {
     @Column(name = "tipologia", length = 30)
     private String tipologia;
 
+    @OneToMany(mappedBy = "auto")
+    private Set<Prenotazione> prenotazione;
+
+
     public String getTarga() {
         return targa;
     }
-
-
 
     public void setTarga(String targa) {
         this.targa = targa;
@@ -65,5 +68,21 @@ public class Auto {
 
     public void setTipologia(String tipologia) {
         this.tipologia = tipologia;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<Prenotazione> getPrenotazione() {
+        return prenotazione;
+    }
+
+    public void setPrenotazione(Set<Prenotazione> prenotazione) {
+        this.prenotazione = prenotazione;
     }
 }

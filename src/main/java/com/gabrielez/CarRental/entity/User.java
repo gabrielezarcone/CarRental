@@ -2,6 +2,7 @@ package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -30,6 +31,9 @@ public class User {
 
     @Column(name="deleted")
     private boolean deleted;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Prenotazione> prenotazione;
 
     public String getUsername() {
         return username;
@@ -93,5 +97,13 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Set<Prenotazione> getPrenotazione() {
+        return prenotazione;
+    }
+
+    public void setPrenotazione(Set<Prenotazione> prenotazione) {
+        this.prenotazione = prenotazione;
     }
 }

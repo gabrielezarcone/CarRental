@@ -6,19 +6,18 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Prenotazioni")
-public class Prenotazione  implements  Serializable{
+public class Prenotazione{
     @Id
-    @Column(name = "data_operazione", length = 30, nullable = false)
-    private Date dataOperazione;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user")
     private User user;
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "auto", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auto")
     private Auto auto;
 
     @Column(name = "stato", length = 30)
@@ -31,12 +30,12 @@ public class Prenotazione  implements  Serializable{
     private Date fine;
 
 
-    public Date getDataOperazione() {
-        return dataOperazione;
+    public Long getId() {
+        return id;
     }
 
-    public void setDataOperazione(Date dataOperazione) {
-        this.dataOperazione = dataOperazione;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUser() {
@@ -79,13 +78,4 @@ public class Prenotazione  implements  Serializable{
         this.fine = fine;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 }
