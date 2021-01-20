@@ -25,7 +25,7 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loggedUser", user);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request,response);
+        Home home = new Home();
+        home.doGet(request, response);
     }
 }
