@@ -1,5 +1,7 @@
 package com.gabrielez.CarRental.entity;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,6 +30,7 @@ public class Prenotazione{
     private Auto auto;
 
     @Column(name = "stato")
+    @ColumnDefault( value = "1" )
     private Stato stato;
 
     @Column(name = "inizio")
