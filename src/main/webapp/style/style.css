@@ -93,3 +93,13 @@ font-family: 'Zilla Slab Highlight', cursive;
     justify-content: center;
     align-items: center;
 }
+
+.listaPrenotrazioni th{
+    background-color: #6ea8fc;
+    padding: 0 10px;
+    border: 1px solid black;
+}
+td{
+    padding: 0 10px;
+    border: 1px solid #454545;
+}
