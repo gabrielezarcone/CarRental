@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
 <div id="customers">
     <div id="add_customer_btn" class="interactive customer_card" onclick="servletToGet('./NewCustomer')"><p>+</p></div>
@@ -41,7 +42,21 @@
                             <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>
                             <td><fmt:formatDate type = "date" value = "${prenotazione.inizio}"/></td>
                             <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
-                            <td>${prenotazione.stato}</td>
+                            <td class="cellaStatoPrenotazione">
+                                <c:choose>
+                                    <%--Non riesco ad effettuare la comparazione con Enum dentro a ${}--%>
+                                    <c:when test="${prenotazione.stato eq 'APPROVATO'}">
+                                        <div>✔️</div>
+                                    </c:when>
+                                    <c:when test="${prenotazione.stato eq 'RIFIUTATO'}">
+                                        <div>❌</div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="interactive approvaBtn">✔️</div>
+                                        <div class="interactive rifiutaBtn">❌</div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
                         <hr>
                     </c:forEach>

@@ -1,15 +1,14 @@
 package com.gabrielez.CarRental.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Prenotazioni")
 public class Prenotazione{
 
-    enum Stato{
-        NON_APPROVATO,
+    public enum Stato{
+        RIFIUTATO,
         DA_APPROVARE,
         APPROVATO
     }

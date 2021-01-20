@@ -103,3 +103,21 @@ td{
     padding: 0 10px;
     border: 1px solid #454545;
 }
+.cellaStatoPrenotazione{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+.cellaStatoPrenotazione div{
+    flex: 1;
+    text-align: center;
+    padding: 3px;
+}
+.approvaBtn{
+    color: #f6f6f6;
+    background-color: #4891fb;
+}
+.rifiutaBtn{
+    color: #f6f6f6;
+    background-color: #217afa;
+}
