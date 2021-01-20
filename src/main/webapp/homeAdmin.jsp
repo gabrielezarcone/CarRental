@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <div id="customers">
     <div id="add_customer_btn" class="interactive customer_card" onclick="servletToGet('./NewCustomer')"><p>+</p></div>
     <c:forEach var="customer" items="${sessionScope.customersList}">
@@ -37,8 +39,8 @@
                     <c:forEach var="prenotazione" items="${listaPrenotazioni}">
                         <tr>
                             <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>
-                            <td>${prenotazione.inizio}</td>
-                            <td>${prenotazione.fine}</td>
+                            <td><fmt:formatDate type = "date" value = "${prenotazione.inizio}"/></td>
+                            <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
                             <td>${prenotazione.stato}</td>
                         </tr>
                         <hr>
