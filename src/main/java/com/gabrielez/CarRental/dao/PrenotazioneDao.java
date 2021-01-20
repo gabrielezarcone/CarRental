@@ -4,6 +4,7 @@ import com.gabrielez.CarRental.entity.Prenotazione;
 import com.gabrielez.CarRental.entity.User;
 import com.gabrielez.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -20,6 +21,41 @@ public class PrenotazioneDao {
             }
         }
         else {
+            return null;
+        }
+    }
+
+    private static void cambiaStato(Prenotazione prenotazione, Prenotazione.Stato stato){
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            prenotazione.setStato(stato);
+            session.saveOrUpdate(prenotazione);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void approva(Prenotazione prenotazione){
+        cambiaStato(prenotazione, Prenotazione.Stato.APPROVATO);
+    }
+    public static void rifiuta(Prenotazione prenotazione){
+        cambiaStato(prenotazione, Prenotazione.Stato.RIFIUTATO);
+    }
+
+    public static Prenotazione getPrenotazioneById(String id) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            Long longID = Long.parseLong(id, 10);
+            return session.get(Prenotazione.class, longID);
+        }
+        catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }

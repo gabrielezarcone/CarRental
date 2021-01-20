@@ -52,8 +52,8 @@
                                         <div>❌</div>
                                     </c:when>
                                     <c:otherwise>
-                                        <div class="interactive approvaBtn">✔️</div>
-                                        <div class="interactive rifiutaBtn">❌</div>
+                                        <div class="interactive approvaBtn" onclick="cambiaStato('${prenotazione.id}','approva')">✔️</div>
+                                        <div class="interactive rifiutaBtn" onclick="cambiaStato('${prenotazione.id}','rifiuta')">❌</div>
                                     </c:otherwise>
                                 </c:choose>
                             </td>
