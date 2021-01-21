@@ -8,9 +8,15 @@ font-family: 'Zilla Slab Highlight', cursive;
  */
 
 *{
+    /* reset stile */
     margin: 0;
     padding: 0;
     font-family: "Calibri", sans-serif;
+}
+a {
+    /* reset stile link */
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .interactive{
@@ -33,6 +39,10 @@ font-family: 'Zilla Slab Highlight', cursive;
 }
 .header_btn{
     margin: 10px;
+    color: #454545;
+    font-size: 3vh;
+    font-weight: bold;
+    padding: 0 3px;
 }
 
 #customers{
