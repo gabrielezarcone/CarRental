@@ -55,14 +55,14 @@
                                 <c:choose>
                                     <%--Non riesco ad effettuare la comparazione con Enum dentro a ${}--%>
                                     <c:when test="${prenotazione.stato eq 'APPROVATO'}">
-                                        <div>✔️</div>
+                                        <div title="approvato">✔️</div>
                                     </c:when>
                                     <c:when test="${prenotazione.stato eq 'RIFIUTATO'}">
-                                        <div>❌</div>
+                                        <div title="rifiutato">❌</div>
                                     </c:when>
                                     <c:otherwise>
-                                        <div class="interactive approvaBtn" onclick="cambiaStato('${prenotazione.id}','approva')">✔️</div>
-                                        <div class="interactive rifiutaBtn" onclick="cambiaStato('${prenotazione.id}','rifiuta')">❌</div>
+                                        <div class="interactive approvaBtn" onclick="cambiaStato('${prenotazione.id}','approva')" title="approva">✔️</div>
+                                        <div class="interactive rifiutaBtn" onclick="cambiaStato('${prenotazione.id}','rifiuta')" title="rifiuta">❌</div>
                                     </c:otherwise>
                                 </c:choose>
                             </td>
