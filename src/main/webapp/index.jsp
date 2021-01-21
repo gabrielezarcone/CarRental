@@ -15,7 +15,6 @@
             <jsp:include page="${pagina}" />
         </c:when>
         <c:otherwise>
-            <jsp:include page="/home" />
         </c:otherwise>
     </c:choose>
 

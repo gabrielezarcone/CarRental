@@ -28,11 +28,14 @@ public class Home extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("loggedUser");
         if(user!=null && user.isIs_admin()){
+            // Se l'utente è admin viene indirizzato verso la lista dei customer
             session.setAttribute("customersList",this.customerList);
             request.setAttribute("pagina", "homeAdmin.jsp");
         }
-        else{
-            request.setAttribute("pagina", "homeCustomer.jsp");
+        else if (user!=null){
+            // se l'utente non è admin, prima di essere indirizzato alla lista delle prenotazioni, questa
+            // deve essere prima generata dal servlet MostraPrenotazioni
+            request.setAttribute("pagina", "MostraPrenotazioni?username="+user.getUsername());
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request,response);
