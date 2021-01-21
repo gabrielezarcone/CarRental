@@ -2,13 +2,41 @@ package com.gabrielez.CarRental.dao;
 
 import com.gabrielez.CarRental.entity.User;
 import com.gabrielez.CarRental.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class UserDao {
+
+    public static List<User> cercaCustomers(String testo, String chiaveRicerca) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            // Uso criteria per rendere dinamica la colonna su cui fare il Like
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            // Definisco lo scheletro della query indicando che il risultato della stessa sarà un oggetto User
+            CriteriaQuery<User> query = builder.createQuery(User.class);
+            // FROM User as u
+            Root<User> u = query.from(User.class);
+            // SELECT * FROM u
+            query.select(u);
+            // SELECT * FROM u WHERE chiaveRicerca LIKE :testoParam and is_admin=false
+            ParameterExpression<String> testoParam = builder.parameter(String.class); //definisco un parametro per evitare sql injection
+            query.where(
+                    builder.like(u.get(chiaveRicerca),testoParam),
+                    builder.equal(u.get("is_admin"), false)
+            );
+            //ottengo i risultati
+            return session.createQuery(query)
+                    .setParameter(testoParam, "%"+testo+"%") // :testoParam -> "%testo%"
+                    .getResultList();
+        }
+    }
 
     public void addUser(User user){
         Transaction transaction = null;
