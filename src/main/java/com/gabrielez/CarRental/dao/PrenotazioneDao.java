@@ -63,4 +63,19 @@ public class PrenotazioneDao {
             return null;
         }
     }
+
+    public static void updatePrenotazione(Prenotazione prenotazione){
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(prenotazione);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if (transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

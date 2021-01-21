@@ -5,10 +5,11 @@
 
 <html>
 <head>
-    <title>Modifica utente</title>
+    <title>Modifica Prenotazione</title>
 </head>
 <body>
     <form class="updateInfoForm" action="UpdatePrenotazione" method="post">
+        <input name="id" type="text" hidden value="${prenotazione.id}">
         <label for="auto">Auto</label>
         <select name="auto" id="auto">
             <c:forEach var="auto" items="${autoList}">
