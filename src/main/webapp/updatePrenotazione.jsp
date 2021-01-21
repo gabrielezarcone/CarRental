@@ -8,7 +8,11 @@
 <body>
     <form class="updateInfoForm" action="UpdatePrenotazione" method="post">
         <label for="auto">Auto</label>
-        <input type="text" name="auto" id="auto" value="${prenotazione.auto}">
+        <select name="auto" id="auto">
+            <c:forEach var="auto" items="${autoList}">
+                <option value="${auto.id}" ${prenotazione.auto.id==auto.id ? 'selected' : ''}>${auto.costruttore} ${auto.modello}</option>
+            </c:forEach>
+        </select>
         <label for="inizio">Data di inizio</label>
         <input type="date" name="inizio" id="inizio" placeholder="${prenotazione.inizio}">
         <label for="fine">Data di fine</label>

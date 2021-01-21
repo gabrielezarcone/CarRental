@@ -1,12 +1,15 @@
 package com.gabrielez.CarRental;
 
+import com.gabrielez.CarRental.dao.AutoDao;
 import com.gabrielez.CarRental.dao.PrenotazioneDao;
+import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.Prenotazione;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "UpdatePrenotazione", value = "/UpdatePrenotazione")
 public class UpdatePrenotazione extends HttpServlet {
@@ -15,7 +18,9 @@ public class UpdatePrenotazione extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idPrenotazione = request.getParameter("id");
         Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(idPrenotazione);
+        List<Auto> autoList = AutoDao.getAutoList();
         request.setAttribute("prenotazione", prenotazione);
+        request.setAttribute("autoList", autoList);
         request.setAttribute("pagina", "updatePrenotazione.jsp");
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

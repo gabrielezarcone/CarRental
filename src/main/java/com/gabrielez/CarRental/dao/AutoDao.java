@@ -36,7 +36,7 @@ public class AutoDao {
      *
      * @return Lista di tutte le auto
      */
-    public List<Auto> getAutos(){
+    public static List<Auto> getAutoList(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             return session.createQuery("FROM Auto", Auto.class).list();
         }
