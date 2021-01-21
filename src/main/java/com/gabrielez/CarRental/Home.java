@@ -7,16 +7,28 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "Home", value = "/home")
 public class Home extends HttpServlet {
+
+    private List<User> customerList;
+
+    public Home(){
+        UserDao userDao = new UserDao();
+        this.customerList = userDao.getCustomers();
+    }
+
+    public Home(List<User> customerList) {
+        this.customerList = customerList;
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("loggedUser");
         if(user!=null && user.isIs_admin()){
-            UserDao userDao = new UserDao();
-            session.setAttribute("customersList",userDao.getCustomers());
+            session.setAttribute("customersList",this.customerList);
             request.setAttribute("pagina", "homeAdmin.jsp");
         }
         else{

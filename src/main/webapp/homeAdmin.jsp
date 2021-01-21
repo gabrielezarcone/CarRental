@@ -4,6 +4,15 @@
 <%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
 <div id="customers">
+    <form id="filerCusotmerForm" action="CercaCustomer" method="post">
+        <input type="text" name="testo" placeholder="Cerca...">
+        <select name="filtro" id="selezionaFiltro">
+            <option value="username">Username</option>
+            <option value="name">Nome</option>
+            <option value="surname">Cognome</option>
+        </select>
+        <input type="submit" class="interactive" value="Cerca">
+    </form>
     <div id="add_customer_btn" class="interactive customer_card" onclick="servletToGet('./NewCustomer')"><p>+</p></div>
     <c:forEach var="customer" items="${sessionScope.customersList}">
         <div class="customer_card ${customer.deleted ? 'deleted_customer' : 'active_customer interactive'}" onclick="servletToGet('./MostraPrenotazioni?username=${customer.username}')">
