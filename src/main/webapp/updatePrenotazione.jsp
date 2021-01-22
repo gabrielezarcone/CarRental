@@ -20,7 +20,8 @@
         <input type="date" name="inizio" id="inizio" value="<fmt:formatDate pattern="yyyy-MM-dd" value = "${prenotazione.inizio}"/>">
         <label for="fine">Data di fine</label>
         <input type="date" name="fine" id="fine" value="<fmt:formatDate pattern="yyyy-MM-dd" value = "${prenotazione.fine}"/>">
-        <input type="submit" value="Salva">
+        <input type="submit" value="Salva" class="interactive">
+        <div id="eliminaPrenotazioneBtn" class="interactive">Elimina prenotazione</div>
     </form>
 </body>
 </html>
