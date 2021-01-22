@@ -57,6 +57,7 @@ function mostraFiltriPrenotazioni(filtro){
     var xhr = new XMLHttpRequest();
     var method = 'POST';
     var url = './FiltroPrenotazioniAjax';
+    xhr.responseType = "json";
     xhr.open(method, url);
     xhr.onload = function () {
         switch (filtro) {
