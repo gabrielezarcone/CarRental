@@ -18,7 +18,7 @@
             <th>Stato Approvazione</th>
         </tr>
         <c:forEach var="prenotazione" items="${listaPrenotazioni}">
-            <tr>
+            <tr class="interactive" onclick="servletToGet('./UpdatePrenotazione?id=${prenotazione.id}')">
                 <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>
                 <td><fmt:formatDate type = "date" value = "${prenotazione.inizio}"/></td>
                 <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
@@ -26,13 +26,13 @@
                     <c:choose>
                         <%--Non riesco ad effettuare la comparazione con Enum dentro a ${}--%>
                         <c:when test="${prenotazione.stato eq 'APPROVATO'}">
-                            <div>✔️</div>
+                            <div title="approvato">✔️</div>
                         </c:when>
                         <c:when test="${prenotazione.stato eq 'RIFIUTATO'}">
-                            <div>❌</div>
+                            <div title="rifiutato">❌</div>
                         </c:when>
                         <c:otherwise>
-                            <div>🕒</div>
+                            <div title="in attesa di approvazione">🕒</div>
                         </c:otherwise>
                     </c:choose>
                 </td>

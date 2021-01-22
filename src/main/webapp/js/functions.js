@@ -1,19 +1,37 @@
+function deleteItem(method, params, url, messaggio){
+    event.stopPropagation();
+    var xhr = new XMLHttpRequest();
+
+    xhr.open(method,url);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function () {
+        alert(messaggio);
+        location.href= './home';
+    }
+    xhr.send(params);
+}
+
+
 function deleteUser(username){
     event.stopPropagation();
     var xhr = new XMLHttpRequest();
     var method = 'POST';
     var params = 'username='+username;
     var url = './deleteUser';
-
-    xhr.open(method,url);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function () {
-        alert("L\'utente "+ username +' è stato eliminato');
-        location.href= './home';
-    }
-    xhr.send(params);
+    var messaggio = "L\'utente "+ username +' è stato eliminato';
+    deleteItem(method, params, url, messaggio)
 }
+function deletePrenotazione(id){
+    event.stopPropagation();
+    var xhr = new XMLHttpRequest();
+    var method = 'POST';
+    var params = 'id='+id;
+    var url = './DeletePrenotazione';
+    var messaggio = "La prenotazione è stata eliminata";
+    deleteItem(method, params, url, messaggio)
+}
+
 
 function servletToGet(url){
     location.href= url;

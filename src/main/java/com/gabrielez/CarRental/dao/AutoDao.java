@@ -36,11 +36,21 @@ public class AutoDao {
      *
      * @return Lista di tutte le auto
      */
-    public List<Auto> getAutos(){
+    public static List<Auto> getAutoList(){
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
             return session.createQuery("FROM Auto", Auto.class).list();
         }
     }
 
+    public static Auto getAutoById(String id){
+        Long longID = Long.parseLong(id, 10);
+        return getAutoById(longID);
+    }
+
+    public static Auto getAutoById(Long id){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(Auto.class, id);
+        }
+    }
 
 }

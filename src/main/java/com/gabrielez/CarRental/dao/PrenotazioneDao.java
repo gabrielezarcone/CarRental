@@ -50,13 +50,47 @@ public class PrenotazioneDao {
     }
 
     public static Prenotazione getPrenotazioneById(String id) {
+        Long longID = Long.parseLong(id, 10);
+        return getPrenotazioneById(longID);
+    }
+
+    public static Prenotazione getPrenotazioneById(Long id) {
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            Long longID = Long.parseLong(id, 10);
-            return session.get(Prenotazione.class, longID);
+            return session.get(Prenotazione.class, id);
         }
         catch (Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public static void updatePrenotazione(Prenotazione prenotazione){
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(prenotazione);
+            transaction.commit();
+        }
+        catch (Exception e){
+            if (transaction!=null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public static void delete(Prenotazione prenotazione){
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.remove(prenotazione);
+            transaction.commit();
+        }
+        catch(Exception e){
+            if (transaction!= null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
     }
 }
