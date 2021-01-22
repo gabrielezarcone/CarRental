@@ -50,8 +50,15 @@ public class PrenotazioneDao {
     }
 
     public static Prenotazione getPrenotazioneById(String id) {
-        Long longID = Long.parseLong(id, 10);
-        return getPrenotazioneById(longID);
+        try {
+            Long longID = Long.parseLong(id, 10);
+            return getPrenotazioneById(longID);
+        }
+        catch (NumberFormatException nfe){
+            // Se la striga non è numero o è null il metodo restituisce null
+            nfe.printStackTrace();
+            return null;
+        }
     }
 
     public static Prenotazione getPrenotazioneById(Long id) {
