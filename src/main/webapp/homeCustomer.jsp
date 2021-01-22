@@ -17,7 +17,7 @@
             <th>Fine</th>
             <th>Stato Approvazione</th>
         </tr>
-        <tr class="addPrenotazione interactive"><td colspan="4"><b>+</b></td></tr>
+        <tr class="addPrenotazione interactive"><td colspan="4"  onclick="servletToGet('./UpdatePrenotazione')"><b>+</b></td></tr>
         <c:forEach var="prenotazione" items="${listaPrenotazioni}">
             <tr class="interactive" onclick="servletToGet('./UpdatePrenotazione?id=${prenotazione.id}')">
                 <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>

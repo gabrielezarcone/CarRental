@@ -10,7 +10,7 @@
 </head>
 <body>
     <c:choose>
-        <c:when test="${DateUtil.diffMenoNGiorni(prenotazione.inizio, 2)}">
+        <c:when test="${not empty prenotazione.inizio and DateUtil.diffMenoNGiorni(prenotazione.inizio, 2)}">
             <p style="text-align: center"> Questa prenotazione non può essere modificata perchè mancano meno di 2 giorni alla sua data di inizio</p>
         </c:when>
         <c:otherwise>
