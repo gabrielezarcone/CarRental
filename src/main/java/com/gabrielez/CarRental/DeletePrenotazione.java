@@ -15,6 +15,11 @@ import java.util.Date;
 public class DeletePrenotazione extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        super.doGet(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(request.getParameter("id"));
         Date oggi = new Date();
         Date dataPrenotazione = prenotazione.getInizio();
@@ -25,10 +30,5 @@ public class DeletePrenotazione extends HttpServlet {
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request,response);
     }
 }
