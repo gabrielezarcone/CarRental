@@ -23,8 +23,6 @@ public class DeletePrenotazione extends HttpServlet {
         Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(request.getParameter("id"));
         Date oggi = new Date();
         Date dataPrenotazione = prenotazione.getInizio();
-        Long i = DateUtil.diffGiorni(oggi, dataPrenotazione);
-        boolean a =  oggi.before(dataPrenotazione);
         if (!DateUtil.diffMenoNGiorni(oggi, dataPrenotazione,2) && oggi.before(dataPrenotazione)) {
             PrenotazioneDao.delete(prenotazione);
         }

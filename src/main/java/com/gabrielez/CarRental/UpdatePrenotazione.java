@@ -2,8 +2,10 @@ package com.gabrielez.CarRental;
 
 import com.gabrielez.CarRental.dao.AutoDao;
 import com.gabrielez.CarRental.dao.PrenotazioneDao;
+import com.gabrielez.CarRental.dao.UserDao;
 import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.Prenotazione;
+import com.gabrielez.CarRental.entity.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,8 +21,14 @@ public class UpdatePrenotazione extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Sia la procedura per modificare la prenotazione che quella per aggiungerne una nuova usano questo metodo
         String idPrenotazione = request.getParameter("id");
-        Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(idPrenotazione);
+        Prenotazione prenotazione = new Prenotazione();
+        if (idPrenotazione != null){
+            // Se l'id non è settato prenotazione rimarra un oggetto nuovo
+            // Se l'id invece è settato vuol dire che sto aggiornando una riga esistente e quindi recupero l'oggetto corrispondente e lo sostituisco
+            prenotazione = PrenotazioneDao.getPrenotazioneById(idPrenotazione);
+        }
         List<Auto> autoList = AutoDao.getAutoList();
         request.setAttribute("prenotazione", prenotazione);
         request.setAttribute("autoList", autoList);
@@ -31,6 +39,7 @@ public class UpdatePrenotazione extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User loggedUser = (User) request.getSession().getAttribute("loggedUser");
         Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(request.getParameter("id"));
         if(prenotazione == null){
             prenotazione = new Prenotazione();
@@ -45,6 +54,7 @@ public class UpdatePrenotazione extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        prenotazione.setUser(loggedUser);
         PrenotazioneDao.updatePrenotazione(prenotazione);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
