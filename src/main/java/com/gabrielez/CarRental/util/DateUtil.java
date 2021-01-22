@@ -22,6 +22,16 @@ public class DateUtil {
     }
 
     /**
+     * identicoi a diffMenoNGiorni, ma usa come prima data la data di oggi
+     * @param date
+     * @param n
+     * @return
+     */
+    public static boolean diffMenoNGiorni(Date date, long n){
+        return diffMenoNGiorni(new Date(), date, n);
+    }
+
+    /**
      * Trasforma una stringa dal formato "yyyy-MM-dd" in un oggetto Date
      * @param dateStr Stringa "yyyy-MM-dd"
      * @return oggetto Date corrispondente
