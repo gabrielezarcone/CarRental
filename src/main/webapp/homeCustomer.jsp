@@ -5,11 +5,7 @@
 
 
 <form id="filerCusotmerForm" action="CercaCustomer" method="post">
-    <select  name="testoRicerca" id="testoRicerca">
-        <c:forEach var="auto" items="${autoList}">
-            <option value="${auto.id}">${auto.costruttore} ${auto.modello}</option>
-        </c:forEach>
-    </select>
+    <script>mostraFiltriPrenotazioni("auto")</script>
     <select name="filtro" id="selezionaFiltro">
         <option value="auto">Auto</option>
         <option value="inizio">Data inizio</option>

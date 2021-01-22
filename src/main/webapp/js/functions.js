@@ -52,3 +52,20 @@ function cambiaStato(id, stato){
     }
     xhr.send(params);
 }
+
+function mostraFiltriPrenotazioni(filtro){
+    var xhr = new XMLHttpRequest();
+    var method = 'POST';
+    var url = './FiltroPrenotazioniAjax';
+    xhr.open(method, url);
+    xhr.onload = function () {
+        switch (filtro) {
+            case "auto":
+                console.log(xhr.response);
+            case "inizio":;
+            case "fine":;
+            case "stato":;
+        }
+    }
+    xhr.send();
+}
