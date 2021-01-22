@@ -1,6 +1,8 @@
 package com.gabrielez.CarRental;
 
+import com.gabrielez.CarRental.dao.AutoDao;
 import com.gabrielez.CarRental.dao.UserDao;
+import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.User;
 
 import javax.servlet.*;
@@ -36,6 +38,8 @@ public class Home extends HttpServlet {
             // se l'utente non è admin, prima di essere indirizzato alla lista delle prenotazioni, questa
             // deve essere prima generata dal servlet MostraPrenotazioni
             request.setAttribute("pagina", "MostraPrenotazioni?username="+user.getUsername());
+            List<Auto> autoList = AutoDao.getAutoList();
+            request.setAttribute("autoList", autoList);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request,response);

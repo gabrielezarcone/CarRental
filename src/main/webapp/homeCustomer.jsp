@@ -3,6 +3,21 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
+
+<form id="filerCusotmerForm" action="CercaCustomer" method="post">
+    <select  name="testoRicerca" id="testoRicerca">
+        <c:forEach var="auto" items="${autoList}">
+            <option value="${auto.id}">${auto.costruttore} ${auto.modello}</option>
+        </c:forEach>
+    </select>
+    <select name="filtro" id="selezionaFiltro">
+        <option value="auto">Auto</option>
+        <option value="inizio">Data inizio</option>
+        <option value="fine">Data Fine</option>
+        <option value="stato">Stato</option>
+    </select>
+    <input type="submit" class="interactive" value="Cerca">
+</form>
 <div id="customers"> <div class="customer_card active_customer" onclick="servletToGet('./MostraPrenotazioni?username=${sessionScope.loggedUser.username}')">
     <div>
         <div>${sessionScope.loggedUser.name} ${sessionScope.loggedUser.surname}</div>
