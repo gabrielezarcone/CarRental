@@ -16,7 +16,7 @@ import java.util.List;
 public class Home extends HttpServlet {
 
     private List<User> customerList;
-    private List<Prenotazione> listaPrenotazioni;
+    private List<Prenotazione> listaPrenotazioni = null;
 
     public Home(){
         UserDao userDao = new UserDao();
@@ -44,16 +44,18 @@ public class Home extends HttpServlet {
             // Se l'utente è admin viene indirizzato verso la lista dei customer
             session.setAttribute("customersList",this.customerList);
             request.setAttribute("pagina", "homeAdmin.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request,response);
         }
         else if (user!=null){
             // se l'utente non è admin, prima di essere indirizzato alla lista delle prenotazioni, questa
             // deve essere prima generata dal servlet MostraPrenotazioni
-            request.setAttribute("pagina", "MostraPrenotazioni?username="+user.getUsername());
             List<Auto> autoList = AutoDao.getAutoList();
             request.setAttribute("autoList", autoList);
+            String username = user.getUsername();
+            MostraPrenotazioni mp = MostraPrenotazioni.mostraPrenotazioniUtente(username, this.listaPrenotazioni);
+            mp.doGet(request,response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request,response);
     }
 
     @Override

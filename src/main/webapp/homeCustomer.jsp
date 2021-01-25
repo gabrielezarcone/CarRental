@@ -4,7 +4,7 @@
 <%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
 
-<form id="filerCusotmerForm" action="CercaCustomer" method="post">
+<form id="filerCusotmerForm" action="CercaPrenotazione" method="post">
     <div id="testoRicerca"></div>
     <script>mostraFiltriPrenotazioni("auto")</script>
     <select name="filtro" id="selezionaFiltro" onchange="cambiaFiltro()">

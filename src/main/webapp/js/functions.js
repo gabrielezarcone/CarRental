@@ -96,13 +96,13 @@ function mostraFiltriPrenotazioni(filtro){
             var select = document.createElement("select");
             select.name = "testoRicerca";
             var opt1 = document.createElement("option");
-            opt1.value = 0;
+            opt1.value = "APPROVATO";
             opt1.text = "Approvato";
             var opt2 = document.createElement("option");
-            opt2.value = 1;
+            opt2.value = "RIFIUTATO";
             opt2.text = "Rifiutato";
             var opt3 = document.createElement("option");
-            opt3.value = 2;
+            opt3.value = "DA_APPROVARE";
             opt3.text = "In attesa";
             select.appendChild(opt1);
             select.appendChild(opt2);
