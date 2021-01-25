@@ -21,7 +21,7 @@ public class CercaCustomer extends HttpServlet {
         String filtro = request.getParameter("filtro"); //Corrisponde alla campo da ricercare scelto da utente
         String testo = request.getParameter("testo"); //Corrisponde al testo inserito da utente
         List<User> risultati =  UserDao.cercaCustomers(testo, filtro);
-        Home home = new Home(risultati);
+        Home home = Home.risultatiRicercaCustomer(risultati);
         home.doGet(request, response);
     }
 }
