@@ -5,8 +5,9 @@
 
 
 <form id="filerCusotmerForm" action="CercaCustomer" method="post">
+    <div id="testoRicerca"></div>
     <script>mostraFiltriPrenotazioni("auto")</script>
-    <select name="filtro" id="selezionaFiltro">
+    <select name="filtro" id="selezionaFiltro" onchange="cambiaFiltro()">
         <option value="auto">Auto</option>
         <option value="inizio">Data inizio</option>
         <option value="fine">Data Fine</option>

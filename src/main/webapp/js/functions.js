@@ -53,20 +53,61 @@ function cambiaStato(id, stato){
     xhr.send(params);
 }
 
+
+function cambiaFiltro(){
+    var filtro = document.getElementById("selezionaFiltro").value;
+    mostraFiltriPrenotazioni(filtro);
+}
 function mostraFiltriPrenotazioni(filtro){
-    var xhr = new XMLHttpRequest();
-    var method = 'POST';
-    var url = './FiltroPrenotazioniAjax';
-    xhr.responseType = "json";
-    xhr.open(method, url);
-    xhr.onload = function () {
-        switch (filtro) {
-            case "auto":
+
+    var ricerca =document.getElementById("testoRicerca");
+    ricerca.innerHTML = '';
+
+    switch (filtro) {
+        case "auto":
+            var xhr = new XMLHttpRequest();
+            var method = 'POST';
+            var url = './FiltroPrenotazioniAjax';
+            xhr.responseType = "json";
+            xhr.open(method, url);
+            xhr.onload = function () {
+                var array = xhr.response;
+                var select = document.createElement("select");
+                select.name = "testoRicerca";
+                for (var i = 0; i < array.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = array[i].id;
+                    option.text = array[i].costruttore+' '+array[i].modello;
+                    select.appendChild(option);
+                }
+                ricerca.appendChild(select);
                 console.log(xhr.response);
-            case "inizio":;
-            case "fine":;
-            case "stato":;
-        }
+            }
+            xhr.send();
+            break
+        case "inizio":
+        case "fine":
+            var input = document.createElement("input");
+            input.type = "date";
+            input.name = "testoRicerca";
+            ricerca.appendChild(input);
+            break
+        case "stato":
+            var select = document.createElement("select");
+            select.name = "testoRicerca";
+            var opt1 = document.createElement("option");
+            opt1.value = 0;
+            opt1.text = "Approvato";
+            var opt2 = document.createElement("option");
+            opt2.value = 1;
+            opt2.text = "Rifiutato";
+            var opt3 = document.createElement("option");
+            opt3.value = 2;
+            opt3.text = "In attesa";
+            select.appendChild(opt1);
+            select.appendChild(opt2);
+            select.appendChild(opt3);
+            ricerca.appendChild(select);
+            break
     }
-    xhr.send();
 }
