@@ -1,5 +1,6 @@
 package com.gabrielez.CarRental.dao;
 
+import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.Prenotazione;
 import com.gabrielez.CarRental.entity.User;
 import com.gabrielez.CarRental.util.HibernateUtil;
@@ -7,6 +8,12 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PrenotazioneDao {
@@ -98,6 +105,44 @@ public class PrenotazioneDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }
+    }
+
+    public static List<Prenotazione> cercaPrenotazioni(String testo, String chiaveRicerca, User loggedUser){
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            String query = "";
+            switch (chiaveRicerca){
+                case "auto":
+                    Auto auto = AutoDao.getAutoById(testo);
+                    query = "FROM Prenotazione where auto=:auto and user=:user";
+                    return session.createQuery(query,Prenotazione.class)
+                            .setParameter("auto", auto)
+                            .setParameter("user", loggedUser)
+                            .list();
+                case "inizio":
+                    query = "FROM Prenotazione where inizio=:testo and user=:user";
+                    return session.createQuery(query,Prenotazione.class)
+                            .setParameter("testo", new SimpleDateFormat("yyyy-MM-dd").parse(testo))
+                            .setParameter("user", loggedUser)
+                            .list();
+                case "fine":
+                    query = "FROM Prenotazione where fine=:testo and user=:user";
+                    return session.createQuery(query,Prenotazione.class)
+                            .setParameter("testo",  new SimpleDateFormat("yyyy-MM-dd").parse(testo))
+                            .setParameter("user", loggedUser)
+                            .list();
+                case "stato":
+                    query = "FROM Prenotazione where stato=:testo and user=:user";
+                    return session.createQuery(query,Prenotazione.class)
+                            .setParameter("testo", Prenotazione.Stato.valueOf(testo))
+                            .setParameter("user", loggedUser)
+                            .list();
+            }
+            return null;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
