@@ -12,7 +12,7 @@
     <div id="loginForm">
         <c:choose>
             <c:when test="${not empty sessionScope.loggedUser.username}">
-                Ciao ${sessionScope.loggedUser.username} 👋
+                <a class="logout_btn header_btn interactive" href="Logout">Logout ${sessionScope.loggedUser.username}👋</a>
             </c:when>
             <c:otherwise>
                 <form action="Login" method="post">

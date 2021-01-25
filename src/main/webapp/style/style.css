@@ -42,7 +42,11 @@ a {
     color: #454545;
     font-size: 3vh;
     font-weight: bold;
-    padding: 0 3px;
+    padding: 2px 5px;
+}
+.logout_btn{
+    color: white;
+    background-color: #ff7367;
 }
 
 #customers{
