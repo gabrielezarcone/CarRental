@@ -13,7 +13,7 @@
         </select>
         <input type="submit" class="interactive" value="Cerca">
     </form>
-    <div id="add_customer_btn" class="interactive customer_card" onclick="servletToGet('./NewCustomer')"><p>+</p></div>
+    <div id="add_customer_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewCustomer')"><p>+</p></div>
     <c:forEach var="customer" items="${sessionScope.customersList}">
         <div class="customer_card ${customer.deleted ? 'deleted_customer' : 'active_customer interactive'}" onclick="servletToGet('./MostraPrenotazioni?username=${customer.username}')">
             <div>
