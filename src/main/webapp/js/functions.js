@@ -31,6 +31,15 @@ function deletePrenotazione(id){
     var messaggio = "La prenotazione è stata eliminata";
     deleteItem(method, params, url, messaggio)
 }
+function deleteAuto(id){
+    event.stopPropagation();
+    var xhr = new XMLHttpRequest();
+    var method = 'POST';
+    var params = 'id='+id;
+    var url = './DeleteAuto';
+    var messaggio = "L'auto selezionata è stata eliminata";
+    deleteItem(method, params, url, messaggio)
+}
 
 
 function servletToGet(url){

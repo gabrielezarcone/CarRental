@@ -17,7 +17,7 @@
     </form>
     <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>--%>
     <c:forEach var="auto" items="${autoList}">
-        <div class="customer_card auto_card" onclick="servletToGet('./MostraPrenotazioni?auto=${auto.id}')">
+        <div class="customer_card auto_card" <%--onclick="servletToGet('./MostraPrenotazioni?auto=${auto.id}')"--%>>
             <div>
                 <table>
                     <tr>
@@ -39,9 +39,9 @@
                     <div class="interactive customer_btn edit_customer_btn" onclick="servletToGet('./UpdateAutoInfo?id=${auto.id}')">
                         Modifica
                     </div>
-                    <%--<div class="interactive customer_btn delete_customer_btn" onclick="deleteAuto('${auto.id}')">
+                    <div class="interactive customer_btn delete_customer_btn" onclick="deleteAuto('${auto.id}')">
                         Elimina
-                    </div>--%>
+                    </div>
                 </div>
             </c:if>
         </div>
