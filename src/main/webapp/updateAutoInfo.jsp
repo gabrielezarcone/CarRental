@@ -9,6 +9,7 @@
 <body>
 
     <form class="updateInfoForm" action="UpdateAutoInfo" method="post">
+        <input name="id" type="text" hidden value="${autoInfo.id}">
         <label for="costruttore">Costruttore</label>
         <input type="text" name="costruttore" id="costruttore" value="${autoInfo.costruttore}">
         <label for="modello">Modello</label>

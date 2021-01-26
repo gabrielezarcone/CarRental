@@ -28,6 +28,13 @@ public class UpdateAutoInfo extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Auto auto = AutoDao.getAutoById(request.getParameter("id"));
+        if(auto==null){
+            auto = new Auto();
+        }
+        AutoDao.addAuto(auto, request);
+        request.setAttribute("pagina", "parcoAuto.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request,response);
     }
 }
