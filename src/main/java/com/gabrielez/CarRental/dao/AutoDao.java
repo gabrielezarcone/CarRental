@@ -1,6 +1,7 @@
 package com.gabrielez.CarRental.dao;
 
 import com.gabrielez.CarRental.entity.Auto;
+import com.gabrielez.CarRental.entity.Prenotazione;
 import com.gabrielez.CarRental.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -87,6 +88,45 @@ public class AutoDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }
+    }
+
+    public static List<Auto> cerca(String testoricerca, String filtro) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            String query = "";
+            switch (filtro){
+                case "costruttore":
+                    Auto auto = AutoDao.getAutoById(testoricerca);
+                    query = "FROM Auto where costruttore like :testo ";
+                    return session.createQuery(query, Auto.class)
+                            .setParameter("testo", "%"+testoricerca+"%")
+                            .list();
+                case "modello":
+                    query = "FROM Auto where modello like :testo ";
+                    return session.createQuery(query,Auto.class)
+                            .setParameter("testo", "%"+testoricerca+"%")
+                            .list();
+                case "immatricolazione":
+                    query = "FROM Auto where immatricolazione=:testo ";
+                    return session.createQuery(query,Auto.class)
+                            .setParameter("testo",  new SimpleDateFormat("yyyy-MM-dd").parse(testoricerca))
+                            .list();
+                case "targa":
+                    query = "FROM Auto where targa like :testo ";
+                    return session.createQuery(query,Auto.class)
+                            .setParameter("testo", "%"+testoricerca+"%")
+                            .list();
+                case "tipologia":
+                    query = "FROM Auto where tipologia like :testo ";
+                    return session.createQuery(query,Auto.class)
+                            .setParameter("testo", "%"+testoricerca+"%")
+                            .list();
+            }
+            return null;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
         }
     }
 }
