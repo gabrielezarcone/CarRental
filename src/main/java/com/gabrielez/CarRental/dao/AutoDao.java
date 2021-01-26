@@ -75,4 +75,18 @@ public class AutoDao {
         }
     }
 
+    public static void delete(Auto auto) {
+        Transaction transaction = null;
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            transaction = session.beginTransaction();
+            session.remove(auto);
+            transaction.commit();
+        }
+        catch(Exception e){
+            if (transaction!= null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }
