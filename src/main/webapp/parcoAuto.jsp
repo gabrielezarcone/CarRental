@@ -5,12 +5,12 @@
 
 <div id="elencoAuto">
     <form id="filerAutoForm" class="filerForm" action="CercaAuto" method="post">
-        <input type="text" name="testoRicerca" placeholder="Cerca...">
+        <input type="text" name="testoRicerca" id="testoRicercaAuto" placeholder="Cerca...">
         <select name="filtro" id="selezionaFiltroAuto" onchange="cambiaFiltroAuto()">
             <option value="costruttore">Costruttore</option>
             <option value="modello">Modello</option>
             <option value="targa">Targa</option>
-<%--            <option value="immatricolazione">Immatricolazione</option>--%>
+            <option value="immatricolazione">Immatricolazione</option>
             <option value="tipologia">Tipologia</option>
         </select>
         <input type="submit" class="interactive" value="Cerca">
