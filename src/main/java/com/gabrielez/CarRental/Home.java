@@ -1,6 +1,7 @@
 package com.gabrielez.CarRental;
 
 import com.gabrielez.CarRental.dao.AutoDao;
+import com.gabrielez.CarRental.dao.PrenotazioneDao;
 import com.gabrielez.CarRental.dao.UserDao;
 import com.gabrielez.CarRental.entity.Auto;
 import com.gabrielez.CarRental.entity.Prenotazione;
@@ -40,6 +41,11 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("loggedUser");
+        String reset = request.getParameter("reset");
+        if(reset!=null && reset.equals("1")){
+            // resetto i risultati della ricerca
+            this.listaPrenotazioni = PrenotazioneDao.listaPrenotazioniCustomer(user) ;
+        }
         if(user!=null && user.isIs_admin()){
             // Se l'utente è admin viene indirizzato verso la lista dei customer
             session.setAttribute("customersList",this.customerList);
