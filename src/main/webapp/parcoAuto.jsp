@@ -4,8 +4,8 @@
 <%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
 <div id="elencoAuto">
-    <%--<form id="filerAutoForm" class="filerForm" action="CercaAuto" method="post">
-        <input type="text" name="testoRicerca" placeholder="Cerca...">
+    <form id="filerAutoForm" class="filerForm" action="CercaAuto" method="post">
+        <input type="text" name="testoRicerca" id="testoRicercaAuto" placeholder="Cerca...">
         <select name="filtro" id="selezionaFiltroAuto" onchange="cambiaFiltroAuto()">
             <option value="costruttore">Costruttore</option>
             <option value="modello">Modello</option>
@@ -14,7 +14,7 @@
             <option value="tipologia">Tipologia</option>
         </select>
         <input type="submit" class="interactive" value="Cerca">
-    </form>--%>
+    </form>
     <c:if test="${sessionScope.loggedUser.is_admin}">
         <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>
     </c:if>
