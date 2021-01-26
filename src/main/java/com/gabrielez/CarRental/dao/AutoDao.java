@@ -60,8 +60,13 @@ public class AutoDao {
     }
 
     public static Auto getAutoById(String id){
-        Long longID = Long.parseLong(id, 10);
-        return getAutoById(longID);
+        try {
+            Long longID = Long.parseLong(id, 10);
+            return getAutoById(longID);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return null; //nel caso in cui l'ID passato non sia valido
+        }
     }
 
     public static Auto getAutoById(Long id){
