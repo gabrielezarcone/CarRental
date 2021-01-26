@@ -199,3 +199,15 @@ td{
     /*background-color: #c284cc;*/
     background-color: #ffc83dba;
 }
+.auto_card table{
+    max-width: 500px;
+}
+.auto_card th{
+    background-color: #ecba38;
+}
+.auto_card td{
+    flex: 1;
+    width: 15vw;
+    border-color: #ecba38;
+    background-color: #ffe4c4;
+}
