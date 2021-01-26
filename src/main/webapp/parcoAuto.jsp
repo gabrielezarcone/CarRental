@@ -4,7 +4,7 @@
 <%@page import="com.gabrielez.CarRental.entity.Prenotazione.Stato" %>
 
 <div id="elencoAuto">
-    <form id="filerAutoForm" class="filerForm" action="CercaAuto" method="post">
+   <%-- <form id="filerAutoForm" class="filerForm" action="CercaAuto" method="post">
         <input type="text" name="testoRicerca" placeholder="Cerca...">
         <select name="filtro" id="selezionaFiltroAuto" onchange="cambiaFiltroAuto()">
             <option value="costruttore">Costruttore</option>
@@ -15,8 +15,8 @@
         </select>
         <input type="submit" class="interactive" value="Cerca">
     </form>
-    <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>
-    <c:forEach var="customer" items="${sessionScope.autoList}">
+    <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>--%>
+    <c:forEach var="auto" items="${autoList}">
         <div class="customer_card auto_card" onclick="servletToGet('./MostraPrenotazioni?auto=${auto.id}')">
             <div>
                 <table>
@@ -29,21 +29,23 @@
                     <tr>
                         <td>${auto.costruttore} ${auto.modello}</td>
                         <td>${auto.targa}</td>
-                        <td>${auto.immatricolazione}</td>
+                        <td><fmt:formatDate type = "date" value = "${auto.immatricolazione}"/></td>
                         <td>${auto.tipologia}</td>
                     </tr>
                 </table>
             </div>
-            <div class="customer_btn_div">
-                <div class="interactive customer_btn edit_customer_btn" onclick="servletToGet('./updateUserInfo?username=${auto.id}')">
-                    Modifica
+            <%--<c:if test="${sessionScope.loggedUser.is_admin}">
+                <div class="customer_btn_div">
+                    <div class="interactive customer_btn edit_customer_btn" onclick="servletToGet('./UpdateAutoInfo?id=${auto.id}')">
+                        Modifica
+                    </div>
+                    <div class="interactive customer_btn delete_customer_btn" onclick="deleteAuto('${auto.id}')">
+                        Elimina
+                    </div>
                 </div>
-                <div class="interactive customer_btn delete_customer_btn" onclick="deleteUser('${auto.id}')">
-                    Elimina
-                </div>
-            </div>
+            </c:if>--%>
         </div>
-        <c:if test="${selectedCustomer==auto.id && not auto.deleted}">
+       <%-- <c:if test="${selectedAuto==auto.id && sessionScope.loggedUser.is_admin}">
             <div class="listaPrenotrazioni">
                 <table>
                     <tr>
@@ -59,7 +61,7 @@
                             <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
                             <td class="cellaStatoPrenotazione">
                                 <c:choose>
-                                    <%--Non riesco ad effettuare la comparazione con Enum dentro a ${}--%>
+                                    &lt;%&ndash;Non riesco ad effettuare la comparazione con Enum dentro a ${}&ndash;%&gt;
                                     <c:when test="${prenotazione.stato eq 'APPROVATO'}">
                                         <div title="approvato">✔️</div>
                                     </c:when>
@@ -77,7 +79,7 @@
                     </c:forEach>
                 </table>
             </div>
-        </c:if>
+        </c:if>--%>
     </c:forEach>
 </div>
 
