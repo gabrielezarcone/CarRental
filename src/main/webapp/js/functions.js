@@ -120,3 +120,33 @@ function mostraFiltriPrenotazioni(filtro){
             break
     }
 }
+
+function cambiaFiltroAuto(){
+    var filtro = document.getElementById("selezionaFiltroAuto").value;
+    mostraFiltriAuto(filtro);
+}
+function mostraFiltriAuto(filtro){
+
+    var ricerca =document.getElementById("testoRicercaAuto");
+
+    switch (filtro) {
+        case "costruttore":
+        case "modello":
+        case "targa":
+        case "tipologia":
+            var input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "Cerca...";
+            input.id = "testoRicercaAuto";
+            input.name = "testoRicerca";
+            ricerca.parentNode.replaceChild(input, ricerca);
+            break
+        case "immatricolazione":
+            var dateInput = document.createElement("input");
+            dateInput.id = "testoRicercaAuto";
+            dateInput.type = "date";
+            dateInput.name = "testoRicerca";
+            ricerca.parentNode.replaceChild(dateInput, ricerca);
+            break
+    }
+}
