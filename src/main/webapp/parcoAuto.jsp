@@ -34,16 +34,16 @@
                     </tr>
                 </table>
             </div>
-            <%--<c:if test="${sessionScope.loggedUser.is_admin}">
+            <c:if test="${sessionScope.loggedUser.is_admin}">
                 <div class="customer_btn_div">
                     <div class="interactive customer_btn edit_customer_btn" onclick="servletToGet('./UpdateAutoInfo?id=${auto.id}')">
                         Modifica
                     </div>
-                    <div class="interactive customer_btn delete_customer_btn" onclick="deleteAuto('${auto.id}')">
+                    <%--<div class="interactive customer_btn delete_customer_btn" onclick="deleteAuto('${auto.id}')">
                         Elimina
-                    </div>
+                    </div>--%>
                 </div>
-            </c:if>--%>
+            </c:if>
         </div>
        <%-- <c:if test="${selectedAuto==auto.id && sessionScope.loggedUser.is_admin}">
             <div class="listaPrenotrazioni">
