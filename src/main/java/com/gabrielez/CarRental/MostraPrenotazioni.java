@@ -28,9 +28,12 @@ public class MostraPrenotazioni extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User loggedUser = (User) request.getSession().getAttribute("loggedUser");
-        if (this.listaPrenotazioni==null){
-            // se è diverso da null vol dire che contiene i risultati della ricerca
-            this.listaPrenotazioni = PrenotazioneDao.listaPrenotazioniCustomer(this.user);
+        String requestUsername = request.getParameter("username");
+        if(requestUsername!=null){
+            // se requestUsername è diverso da null è perchè è stata richiesta la visualizzazione di tutte le prenotazioni di quell'utente tramite la homepage di admin
+            // requestUsername è null invece quando la richiesta proviene dalle altre pagine
+            this.user = UserDao.getUser(requestUsername);
+            this.listaPrenotazioni =  PrenotazioneDao.listaPrenotazioniCustomer(this.user) ;
         }
         request.setAttribute("listaPrenotazioni",  this.listaPrenotazioni);
         request.setAttribute("selectedCustomer", this.user.getUsername());
