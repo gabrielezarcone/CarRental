@@ -20,8 +20,7 @@ public class Home extends HttpServlet {
     private List<Prenotazione> listaPrenotazioni = null;
 
     public Home(){
-        UserDao userDao = new UserDao();
-        this.customerList = userDao.getCustomers();
+        this.updateCustomerList();
     }
 
     // Static factory method
@@ -48,6 +47,7 @@ public class Home extends HttpServlet {
         }
         if(user!=null && user.isIs_admin()){
             // Se l'utente è admin viene indirizzato verso la lista dei customer
+            this.updateCustomerList();
             session.setAttribute("customersList",this.customerList);
             request.setAttribute("pagina", "homeAdmin.jsp");
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -62,6 +62,11 @@ public class Home extends HttpServlet {
             MostraPrenotazioni mp = MostraPrenotazioni.mostraPrenotazioniUtente(username, this.listaPrenotazioni);
             mp.doGet(request,response);
         }
+    }
+
+    private void updateCustomerList() {
+        UserDao userDao = new UserDao();
+        this.customerList = userDao.getCustomers();
     }
 
     @Override
