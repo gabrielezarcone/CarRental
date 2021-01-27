@@ -16,7 +16,7 @@
         <input type="text" name="name" id="name" value="${userInfo.name}">
         <label for="surname">Cognome</label>
         <input type="text" name="surname" id="surname" value="${userInfo.surname}">
-        <label for="birthDate">Data di nascita</label>
+        <label for="birth_date">Data di nascita</label>
         <input type="date" name="birth_date" id="birth_date" value="${userInfo.birth_date}">
         <input type="submit" value="Salva">
     </form>

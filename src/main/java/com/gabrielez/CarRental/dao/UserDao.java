@@ -38,6 +38,7 @@ public class UserDao {
         }
     }
 
+
     public void addUser(User user){
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
@@ -100,6 +101,12 @@ public class UserDao {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static User getUser(User user) {
+            try(Session session= HibernateUtil.getSessionFactory().openSession()){
+                return  session.get(User.class, user.getId());
+            }
     }
 
     public static void updateUser(User user){

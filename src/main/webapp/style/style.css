@@ -223,3 +223,30 @@ td{
     border-color: #ecba38;
     background-color: #ffe4c4;
 }
+
+#userInfoList{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#userInfoList h1{
+    font-size: 2em;
+    color: #f6f6f6;
+}
+#userInfoList p{
+    font-size: 1.5em;
+    color: #454545;
+}
+.userInfo{
+    padding: 10px;
+    margin: 5px;
+    width: 240px;
+    background-color: #6ea8fc;
+}
+.updateBtn {
+    background-color: #97D077;
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 18px;
+}
