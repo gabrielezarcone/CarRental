@@ -244,3 +244,9 @@ td{
     width: 240px;
     background-color: #6ea8fc;
 }
+.updateBtn {
+    background-color: #97D077;
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 18px;
+}

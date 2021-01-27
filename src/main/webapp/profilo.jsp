@@ -18,7 +18,7 @@
         <h1>Data di nascita</h1>
         <p><fmt:formatDate pattern="dd/MM/yyyy" value="${sessionScope.loggedUser.birth_date}"/> </p>
     </div>
-    <div onclick="servletToGet('./updateUserInfo?username=${sessionScope.loggedUser.username}')">
+    <div class="updateBtn interactive" onclick="servletToGet('./updateUserInfo?username=${sessionScope.loggedUser.username}')">
         Modifica informazioni utente
     </div>
 </div>
