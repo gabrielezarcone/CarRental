@@ -19,7 +19,7 @@
         <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>
     </c:if>
     <c:forEach var="auto" items="${autoList}">
-        <div class="customer_card auto_card" <%--onclick="servletToGet('./MostraPrenotazioni?auto=${auto.id}')"--%>>
+        <div class="customer_card auto_card ${sessionScope.loggedUser.is_admin ? "interactive":""}" onclick="servletToGet('./MostraPrenotazioniAuto?auto=${auto.id}')">
             <div>
                 <table>
                     <tr>
@@ -47,8 +47,8 @@
                 </div>
             </c:if>
         </div>
-       <%-- <c:if test="${selectedAuto==auto.id && sessionScope.loggedUser.is_admin}">
-            <div class="listaPrenotrazioni">
+        <c:if test="${selectedAuto.id==auto.id && sessionScope.loggedUser.is_admin}">
+            <div class="listaPrenotrazioni prenotazioneAuto">
                 <table>
                     <tr>
                         <th>Utente</th>
@@ -58,12 +58,12 @@
                     </tr>
                     <c:forEach var="prenotazione" items="${listaPrenotazioni}">
                         <tr>
-                            <td>${prenotazione.user}</td>
+                            <td>${prenotazione.user.username}</td>
                             <td><fmt:formatDate type = "date" value = "${prenotazione.inizio}"/></td>
                             <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
                             <td class="cellaStatoPrenotazione">
                                 <c:choose>
-                                    &lt;%&ndash;Non riesco ad effettuare la comparazione con Enum dentro a ${}&ndash;%&gt;
+                                    <%--Non riesco ad effettuare la comparazione con Enum dentro a ${}--%>
                                     <c:when test="${prenotazione.stato eq 'APPROVATO'}">
                                         <div title="approvato">✔️</div>
                                     </c:when>
@@ -81,7 +81,7 @@
                     </c:forEach>
                 </table>
             </div>
-        </c:if>--%>
+        </c:if>
     </c:forEach>
 </div>
 
