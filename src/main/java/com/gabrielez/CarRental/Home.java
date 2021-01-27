@@ -62,6 +62,10 @@ public class Home extends HttpServlet {
             MostraPrenotazioni mp = MostraPrenotazioni.mostraPrenotazioniUtente(username, this.listaPrenotazioni);
             mp.doGet(request,response);
         }
+        else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request,response);
+        }
     }
 
     private void updateCustomerList() {

@@ -15,11 +15,6 @@
                 <a class="logout_btn header_btn interactive" href="Logout">Logout ${sessionScope.loggedUser.username}👋</a>
             </c:when>
             <c:otherwise>
-                <form action="Login" method="post">
-                    <input type="text" name="username" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
-                    <input type="submit" value="Invia">
-                </form>
             </c:otherwise>
         </c:choose>
     </div>
