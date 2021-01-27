@@ -14,11 +14,12 @@ import java.text.SimpleDateFormat;
 public class UpdateUserInfo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Controllo che l'utente loggato sia un admin prima di farlo accedere alla pagina di modifica
         HttpSession httpSession = request.getSession();
         User loggedUser = (User) httpSession.getAttribute("loggedUser");
-        if(loggedUser!=null && loggedUser.isIs_admin()){
-            String username = request.getParameter("username");
+        String username = request.getParameter("username");
+        // Controllo che l'utente loggato sia un admin prima di farlo accedere alla pagina di modifica
+        // Se l'utente non è admin, ma vuole modificare se stesso può accedere alla pagina
+        if(loggedUser!=null && (loggedUser.isIs_admin()|| loggedUser.getUsername().equals(username))){
             User user = UserDao.getUser(username);
             request.setAttribute("userInfo", user);
             request.setAttribute("pagina", "updateUserInfo.jsp");
@@ -49,7 +50,15 @@ public class UpdateUserInfo extends HttpServlet {
             user.setPassword(request.getParameter("password"));
         }
         UserDao.updateUser(user);
+        updateLoggedUser(request);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request,response);
+    }
+
+    private static void updateLoggedUser(HttpServletRequest request) {
+        HttpSession httpSession = request.getSession();
+        User loggedUser = (User) httpSession.getAttribute("loggedUser");
+        User user = UserDao.getUser(loggedUser);
+        httpSession.setAttribute("loggedUser", user);
     }
 }
