@@ -19,7 +19,7 @@
         <div id="add_auto_btn" class="add_element_btn interactive customer_card" onclick="servletToGet('./NewAuto')"><p>+</p></div>
     </c:if>
     <c:forEach var="auto" items="${autoList}">
-        <div class="customer_card auto_card" onclick="servletToGet('./MostraPrenotazioniAuto?auto=${auto.id}')">
+        <div class="customer_card auto_card ${sessionScope.loggedUser.is_admin ? "interactive":""}" onclick="servletToGet('./MostraPrenotazioniAuto?auto=${auto.id}')">
             <div>
                 <table>
                     <tr>
@@ -48,7 +48,7 @@
             </c:if>
         </div>
         <c:if test="${selectedAuto.id==auto.id && sessionScope.loggedUser.is_admin}">
-            <div class="listaPrenotrazioni">
+            <div class="listaPrenotrazioni prenotazioneAuto">
                 <table>
                     <tr>
                         <th>Utente</th>

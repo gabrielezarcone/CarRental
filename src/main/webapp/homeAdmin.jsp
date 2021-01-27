@@ -38,7 +38,7 @@
             </div>
         </div>
         <c:if test="${selectedCustomer==customer.username && not customer.deleted}">
-            <div class="listaPrenotrazioni">
+            <div class="listaPrenotrazioni prenotazioneCustomer">
                 <table>
                     <tr>
                         <th>Auto</th>
