@@ -5,10 +5,10 @@
 
 <div id="homeAdmin">
     <div id="sideMenu">
-        <a href="home">Lista customers</a>
-        <a href="ParcoAuto">Lista auto</a>
-        <a href="NewCustomer">Nuovo utente</a>
-        <a href="NewAuto">Nuova auto</a>
+        <a class="interactive menuBtn" href="home">Lista customers</a>
+        <a class="interactive menuBtn" href="ParcoAuto">Lista auto</a>
+        <a class="interactive menuBtn" href="NewCustomer">Nuovo utente</a>
+        <a class="interactive menuBtn" href="NewAuto">Nuova auto</a>
     </div>
     <div id="customers">
         <form id="filerCusotmerForm" class="filerForm" action="CercaCustomer" method="post">

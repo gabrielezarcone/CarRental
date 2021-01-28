@@ -55,10 +55,11 @@ a {
     display: flex;
 }
 #sideMenu{
-    width: 6vw;
+    width: 10vw;
     display: flex;
     flex-direction: column;
-    padding: 2vw;
+    /*padding-left: 2vw;
+    padding-top: 5vw;*/
 }
 #customers{
     padding-right: 10vw;
@@ -278,4 +279,12 @@ td{
     font-size: 1.3em;
     padding: 10px;
     margin: 18px;
+}
+
+.menuBtn {
+    background-color: #a0a0a0;
+    color: white;
+    margin: 2px;
+    padding: 2px;
+    height: 25px;
 }
