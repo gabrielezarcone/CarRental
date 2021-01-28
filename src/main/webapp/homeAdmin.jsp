@@ -54,7 +54,7 @@
                             <th>Stato Approvazione</th>
                         </tr>
                         <c:forEach var="prenotazione" items="${listaPrenotazioni}">
-                            <tr>
+                            <tr class="interactive" onclick="servletToGet('./UpdatePrenotazione?id=${prenotazione.id}')">
                                 <td>${prenotazione.auto.costruttore} ${prenotazione.auto.modello}</td>
                                 <td><fmt:formatDate type = "date" value = "${prenotazione.inizio}"/></td>
                                 <td><fmt:formatDate type = "date" value = "${prenotazione.fine}"/></td>
