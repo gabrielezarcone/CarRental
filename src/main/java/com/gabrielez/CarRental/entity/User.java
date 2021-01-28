@@ -32,7 +32,7 @@ public class User {
     @Column(name="deleted")
     private boolean deleted;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Prenotazione> prenotazione;
 
     public String getUsername() {

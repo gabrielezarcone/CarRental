@@ -26,7 +26,7 @@ public class Auto {
     @Column(name = "tipologia", length = 30)
     private String tipologia;
 
-    @OneToMany(mappedBy = "auto")
+    @OneToMany(mappedBy = "auto", cascade = CascadeType.ALL)
     private Set<Prenotazione> prenotazione;
 
 
