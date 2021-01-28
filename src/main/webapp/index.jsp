@@ -11,11 +11,23 @@
     <jsp:include page="lib/header.jsp" />
 
     <c:choose>
-        <c:when test="${not empty pagina}">
-            <jsp:include page="${pagina}" />
-        </c:when>
-        <c:otherwise>
-        </c:otherwise>
+            <c:when test="${empty sessionScope.loggedUser}">
+                <form id="loginForm" action="Login" method="post">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" value="Log In">
+                </form>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${not empty pagina}">
+                        <jsp:include page="${pagina}" />
+                    </c:when>
+                    <c:otherwise>
+                        <jsp:include page='${sessionScope.loggedUser.is_admin ? "homeAdmin.jsp" : "homeCustomers.jsp"}' />
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
     </c:choose>
 
 </body>
