@@ -9,7 +9,7 @@
     <a href="home?reset=1" id="homepage_btn" class="header_btn interactive">HomePage</a>
     <a href="ParcoAuto" id="parcoauto_btn" class="header_btn interactive">Parco Auto</a>
     <a href="Profilo" id="profilo_btn" class="header_btn interactive">Profilo utente</a>
-    <div id="loginForm">
+    <div>
         <c:choose>
             <c:when test="${not empty sessionScope.loggedUser.username}">
                 <a class="logout_btn header_btn interactive" href="Logout">Logout ${sessionScope.loggedUser.username}👋</a>

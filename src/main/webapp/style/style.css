@@ -104,7 +104,24 @@ a {
 }
 
 #loginForm{
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    margin: 65px auto;
+    width: 400px;
+    flex-wrap: wrap;
+}
+#loginForm input{
+    height: 30px;
+}
+#loginForm [type=submit]{
+    flex: 0 0 100%;
+    background-color: #ff7367;
+    color: white;
+    border: 0;
+}
+#loginForm :not([type=submit]){
+    flex: 1;
+    min-width: 0;
 }
 
 .updateInfoForm{
