@@ -36,16 +36,34 @@ a {
 #header{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .header_btn{
     margin: 10px;
     color: #454545;
-    font-size: 3vh;
+    font-size: 1.3em;
     font-weight: bold;
-    padding: 0 3px;
+    padding: 2px 5px;
+}
+.logout_btn{
+    color: white;
+    background-color: #ff7367;
+    border-radius: 5px;
 }
 
+#homeAdmin {
+    display: flex;
+}
+#sideMenu{
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    /*padding-left: 2vw;
+    padding-top: 5vw;*/
+}
 #customers{
+    padding-right: 10vw;
+    width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,6 +72,12 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#elencoAuto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 .customer_card{
@@ -93,7 +117,24 @@ a {
 }
 
 #loginForm{
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    margin: 65px auto;
+    width: 400px;
+    flex-wrap: wrap;
+}
+#loginForm input{
+    height: 30px;
+}
+#loginForm [type=submit]{
+    flex: 0 0 100%;
+    background-color: #ff7367;
+    color: white;
+    border: 0;
+}
+#loginForm :not([type=submit]){
+    flex: 1;
+    min-width: 0;
 }
 
 .updateInfoForm{
@@ -112,17 +153,28 @@ a {
     margin: 7px 0;
 }
 
-#add_customer_btn{
+.add_element_btn{
     font-size: 4em;
     background-color: #f6f6f6;
     justify-content: center;
     align-items: center;
 }
 
+.listaPrenotrazioni{
+    width: 505px;
+}
+.listaPrenotrazioni table{
+    width: 100%;
+}
 .listaPrenotrazioni th{
-    background-color: #6ea8fc;
     padding: 0 10px;
     border: 1px solid black;
+}
+.prenotazioneCustomer th{
+    background-color: #6ea8fc;
+}
+.prenotazioneAuto th{
+    background-color: #a0a0a0;
 }
 td{
     padding: 0 10px;
@@ -183,4 +235,62 @@ td{
 #testoRicerca *{
     height: 100%;
     width: 100%;
+}
+
+.auto_card{
+    /*background-color: #c284cc;*/
+    background-color: #ffc83dba;
+}
+.auto_card table{
+    max-width: 500px;
+}
+.auto_card th{
+    background-color: #ecba38;
+}
+.auto_card td{
+    flex: 1;
+    width: 15vw;
+    border-color: #ecba38;
+    background-color: #ffe4c4;
+}
+
+#userInfoList{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#userInfoList h1{
+    font-size: 2em;
+    color: #f6f6f6;
+}
+#userInfoList p{
+    font-size: 1.5em;
+    color: #454545;
+}
+.userInfo{
+    padding: 10px;
+    margin: 5px;
+    width: 240px;
+    background-color: #6ea8fc;
+}
+.updateBtn {
+    background-color: #97D077;
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 18px;
+}
+
+.menuBtn {
+    background-color: #a0a0a0;
+    color: white;
+    margin: 2px;
+    padding: 2px;
+    height: 25px;
+}
+
+.errorMessage {
+    background-color: #ff7367;
+    color: #f6f6f6;
+    text-align: center;
 }

@@ -22,7 +22,7 @@
             <b>${sessionScope.loggedUser.username}</b>
         </div>
     </div>
-    <div class="listaPrenotrazioni">
+    <div class="listaPrenotrazioni prenotazioneCustomer">
         <table>
             <tr>
                 <th>Auto</th>

@@ -145,4 +145,13 @@ public class PrenotazioneDao {
             return null;
         }
     }
+
+    public static List<Prenotazione> listPrenotazioni(Auto auto) {
+        try(Session session=HibernateUtil.getSessionFactory().openSession()) {
+            String queryStr = "from Prenotazione where auto=:auto";
+            return session.createQuery(queryStr, Prenotazione.class)
+                    .setParameter("auto", auto)
+                    .list();
+        }
+    }
 }
