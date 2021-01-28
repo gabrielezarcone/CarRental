@@ -37,6 +37,10 @@ public class UpdateUserInfo extends HttpServlet {
         user.setUsername(request.getParameter("username"));
         user.setName(request.getParameter("name"));
         user.setSurname(request.getParameter("surname"));
+        String adminParam = request.getParameter("admin");
+        if(adminParam!=null && adminParam.equals("true")){
+            user.setIs_admin(true);
+        }
         try {
             String date = request.getParameter("birth_date");
             if(date != null){
