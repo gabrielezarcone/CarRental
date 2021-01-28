@@ -288,3 +288,9 @@ td{
     padding: 2px;
     height: 25px;
 }
+
+.errorMessage {
+    background-color: #ff7367;
+    color: #f6f6f6;
+    text-align: center;
+}

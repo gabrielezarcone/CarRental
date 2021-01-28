@@ -20,10 +20,18 @@ public class Login extends HttpServlet {
         String username =  request.getParameter("username").toString();
         String password =  request.getParameter("password").toString();
         User user = UserDao.getUser(username);
-        if(user.getPassword().equals(password)){
-            // Imposto il nome utente in sessione
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedUser", user);
+        try {
+            if(user.getPassword().equals(password)){
+                // Imposto il nome utente in sessione
+                HttpSession session = request.getSession();
+                session.setAttribute("loggedUser", user);
+            }
+            else {
+                request.setAttribute("loginErrato", true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("loginErrato", true);
         }
         Home home = new Home();
         home.doGet(request, response);

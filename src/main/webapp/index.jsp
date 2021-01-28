@@ -17,6 +17,9 @@
                     <input type="password" name="password" placeholder="Password">
                     <input type="submit" value="Log In">
                 </form>
+                <c:if test="${loginErrato}">
+                    <p class="errorMessage"> Username o password errati 😳</p>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <c:choose>
