@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
         String password =  request.getParameter("password").toString();
         User user = UserDao.getUser(username);
         try {
-            if(user.getPassword().equals(password)){
+            if(user.getPassword().equals(password) && user.getUsername().equals(username)){
                 // Imposto il nome utente in sessione
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedUser", user);
