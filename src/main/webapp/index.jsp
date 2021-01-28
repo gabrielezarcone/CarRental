@@ -17,6 +17,9 @@
                     <input type="password" name="password" placeholder="Password">
                     <input type="submit" value="Log In">
                 </form>
+                <c:if test="${loginErrato}">
+                    <p class="errorMessage"> Username o password errati 😳</p>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <c:choose>
@@ -24,7 +27,7 @@
                         <jsp:include page="${pagina}" />
                     </c:when>
                     <c:otherwise>
-                        <jsp:include page='${sessionScope.loggedUser.is_admin ? "homeAdmin.jsp" : "homeCustomers.jsp"}' />
+                        <jsp:include page='${sessionScope.loggedUser.is_admin ? "homeAdmin.jsp" : "homeCustomer.jsp"}' />
                     </c:otherwise>
                 </c:choose>
             </c:otherwise>

@@ -46,6 +46,8 @@ public class UpdatePrenotazione extends HttpServlet {
         }
         Auto auto = AutoDao.getAutoById(request.getParameter("auto"));
         prenotazione.setAuto(auto);
+        // ogni volta che viene fatta una modifica alla prenotazione l'admin dovrà nuovamente approvarla
+        prenotazione.setStato(Prenotazione.Stato.DA_APPROVARE);
         try {
             String inizio = request.getParameter("inizio");
             prenotazione.setInizio( new SimpleDateFormat("yyyy-MM-dd").parse(inizio));
