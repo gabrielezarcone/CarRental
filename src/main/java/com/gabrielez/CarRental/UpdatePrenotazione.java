@@ -43,6 +43,8 @@ public class UpdatePrenotazione extends HttpServlet {
         Prenotazione prenotazione = PrenotazioneDao.getPrenotazioneById(request.getParameter("id"));
         if(prenotazione == null){
             prenotazione = new Prenotazione();
+            // solo se la prenotazione è nuova bisogna settare l'utente.
+            prenotazione.setUser(loggedUser);
         }
         Auto auto = AutoDao.getAutoById(request.getParameter("auto"));
         prenotazione.setAuto(auto);
@@ -56,9 +58,7 @@ public class UpdatePrenotazione extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        prenotazione.setUser(loggedUser);
         PrenotazioneDao.updatePrenotazione(prenotazione);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("home?reset=1");
     }
 }

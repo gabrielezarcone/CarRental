@@ -1,6 +1,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <title>Modifica utente</title>
@@ -21,7 +23,7 @@
             <input type="checkbox" name="admin" id="admin" value="true" ${userInfo.is_admin ? "checked": ""}>
         </c:if>
         <label for="birth_date">Data di nascita</label>
-        <input type="date" name="birth_date" id="birth_date" value="${userInfo.birth_date}">
+        <input type="date" name="birth_date" id="birth_date" value="<fmt:formatDate pattern="yyyy-MM-dd" value = "${userInfo.birth_date}"/>">
         <input type="submit" value="Salva">
     </form>
 </body>

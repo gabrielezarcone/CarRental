@@ -55,8 +55,7 @@ public class UpdateUserInfo extends HttpServlet {
         }
         UserDao.updateUser(user);
         updateLoggedUser(request);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request,response);
+        response.sendRedirect("home?reset=1");
     }
 
     private static void updateLoggedUser(HttpServletRequest request) {
