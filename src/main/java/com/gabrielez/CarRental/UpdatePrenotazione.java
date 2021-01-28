@@ -58,7 +58,6 @@ public class UpdatePrenotazione extends HttpServlet {
         }
         prenotazione.setUser(loggedUser);
         PrenotazioneDao.updatePrenotazione(prenotazione);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("home?reset=1");
     }
 }

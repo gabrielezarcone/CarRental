@@ -33,8 +33,6 @@ public class UpdateAutoInfo extends HttpServlet {
             auto = new Auto();
         }
         AutoDao.addAuto(auto, request);
-        request.setAttribute("pagina", "parcoAuto.jsp");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request,response);
+        response.sendRedirect("ParcoAuto");
     }
 }
