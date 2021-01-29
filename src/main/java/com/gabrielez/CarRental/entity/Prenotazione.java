@@ -1,5 +1,6 @@
 package com.gabrielez.CarRental.entity;
 
+import org.hibernate.annotations.Check;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -7,6 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Prenotazioni")
+@Check(constraints = "inizio < fine")
 public class Prenotazione{
 
     public enum Stato{
