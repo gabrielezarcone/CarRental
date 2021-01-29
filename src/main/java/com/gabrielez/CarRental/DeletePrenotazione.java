@@ -26,7 +26,6 @@ public class DeletePrenotazione extends HttpServlet {
         if (!DateUtil.diffMenoNGiorni(oggi, dataPrenotazione,2) && oggi.before(dataPrenotazione)) {
             PrenotazioneDao.delete(prenotazione);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("home?reset=1");
     }
 }
