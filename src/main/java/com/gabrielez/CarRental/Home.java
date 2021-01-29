@@ -95,4 +95,12 @@ public class Home extends HttpServlet {
     public void setListaPrenotazioni(List<Prenotazione> listaPrenotazioni) {
         this.listaPrenotazioni = listaPrenotazioni;
     }
+
+    protected static void renderSearchPageAdmin(List<User> userList, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        HttpSession session = request.getSession();
+        session.setAttribute("customersList", userList);
+        request.setAttribute("pagina", "homeAdmin.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
+    }
 }
